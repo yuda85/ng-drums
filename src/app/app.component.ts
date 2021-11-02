@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
+import { ISound } from './models';
+import { AudioService } from './services/audio.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'ng-drum-kit';
+
+  public drumKit: Array<ISound>;
+
+  constructor(private audioService: AudioService) {
+    this.drumKit = audioService.getDrumKit();
+  }
 }
